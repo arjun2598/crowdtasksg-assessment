@@ -33,8 +33,8 @@ const Login = () => {
             });
 
             // Handle Successful login response
-            if (response.data && response.data.accessToken) {
-                localStorage.setItem("token", response.data.accessToken); // store access token if present
+            if (response.data && response.data.token) {
+                localStorage.setItem("token", response.data.token); // store access token if present
                 navigate("/dashboard"); // route to home page
             }
         } catch (error) {
