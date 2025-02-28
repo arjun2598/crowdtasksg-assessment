@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const bcrypt = require("bcryptjs");
 const { Client } = require("pg");
     
 const app = express();
@@ -39,14 +40,22 @@ app.post("/login", async (req, res) => {
     }
 
     try {
-        const query = 'SELECT * FROM users WHERE username = $1 AND password_hash = $2';
-        const result = await client.query(query, [username, password])
+        const query = 'SELECT * FROM users WHERE username = $1';
+        const result = await client.query(query, [username])
 
         if (result.rows.length === 0) {
-            return res.status(401).json({ message: "Invalid username or password" });
+            return res.status(401).json({ message: "Username does not exist." });
         }
 
         const user = result.rows[0];
+        const storedPasswordHash = user.password_hash;
+        console.log(password, storedPasswordHash);
+        const match = await bcrypt.compare(password, storedPasswordHash);
+
+        if (!match) {
+            return res.status(401).json({ message: "Incorrect password." });
+        }
+
         const token = jwt.sign({ id: user.id, username: user.username }, process.env.JWT_SECRET, { expiresIn: "1h" });
         return res.json({ message: "Login successful", user: { username: user.username, password: user.password_hash }, token });
     } catch (err) {
