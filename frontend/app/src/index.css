@@ -9,5 +9,9 @@
 }
 
 .bg-login {
-    background-image: url('./assets/bg.jpg');
+    background-image: url('./assets/bg-login.jpg');
+}
+
+.bg-home {
+    background-image: url('./assets/bg-home.jpg');
 }

@@ -7,7 +7,8 @@ const Home = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate(); 
+  
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -21,15 +22,11 @@ const Home = () => {
     const fetchUserData = async () => {
       try {
         const response = await axiosInstance.get("/get-user", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          headers: { Authorization: `Bearer ${token}` },
         });
 
         const userData = response.data.user;
-
-        userData.date_of_birth = new Date(userData.date_of_birth)
-          .toLocaleDateString("en-GB"); // Formats as DD/MM/YYYY
+        userData.date_of_birth = new Date(userData.date_of_birth).toLocaleDateString("en-GB");
 
         setUser(userData);
         setLoading(false);
@@ -43,8 +40,8 @@ const Home = () => {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("token"); // Remove authorization token
-    navigate("/"); // Redirect to default login
+    localStorage.removeItem("token");
+    navigate("/");
   };
 
   if (loading) {
@@ -64,42 +61,44 @@ const Home = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
-      <div className="bg-white shadow-lg rounded-lg p-8 max-w-lg w-full">
-        <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">
-          User Profile
-        </h1>
-        
-        <div className="space-y-4 text-gray-700">
-          <div className="flex items-center gap-3">
-            <FaUser className="text-cyan-600" size={20} />
-            <span><strong>Name:</strong> {user.first_name + " " + user.last_name}</span>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-home bg-cover bg-center p-6">
+      <div className="bg-transparent outline shadow-2xl rounded-xl p-8 max-w-md w-full relative overflow-hidden">
+        {/* Profile Picture */}
+        <div className="flex flex-col items-center">
+          <div className="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 text-4xl shadow-md">
+            <FaUser />
           </div>
+          <h2 className="text-xl font-bold mt-4 text-gray-800">{user.first_name + " " + user.last_name}</h2>
+          <p className="text-gray-500 text-sm">User Profile</p>
+        </div>
 
-          <div className="flex items-center gap-3">
-            <FaIdCard className="text-cyan-600" size={20} />
+        {/* User Details */}
+        <div className="mt-6 space-y-4">
+          <div className="flex items-center gap-3 bg-gray-100 p-3 rounded-lg">
+            <FaIdCard className="text-blue-600" size={20} />
             <span><strong>NRIC:</strong> {user.nric}</span>
           </div>
 
-          <div className="flex items-center gap-3">
-            <FaCalendarAlt className="text-cyan-600" size={20} />
+          <div className="flex items-center gap-3 bg-gray-100 p-3 rounded-lg">
+            <FaCalendarAlt className="text-green-600" size={20} />
             <span><strong>Date of Birth:</strong> {user.date_of_birth}</span>
           </div>
 
-          <div className="flex items-center gap-3">
-            <FaMapMarkerAlt className="text-cyan-600" size={20} />
+          <div className="flex items-center gap-3 bg-gray-100 p-3 rounded-lg">
+            <FaMapMarkerAlt className="text-red-600" size={20} />
             <span><strong>Address:</strong> {user.address}</span>
           </div>
 
-          <div className="flex items-center gap-3">
-            <FaVenusMars className="text-cyan-600" size={20} />
+          <div className="flex items-center gap-3 bg-gray-100 p-3 rounded-lg">
+            <FaVenusMars className="text-purple-600" size={20} />
             <span><strong>Gender:</strong> {user.gender}</span>
           </div>
         </div>
 
+        {/* Logout Button */}
         <button
           onClick={handleLogout}
-          className="mt-6 w-full flex items-center justify-center gap-2 bg-red-600 text-white px-4 py-2 rounded-lg text-lg font-semibold hover:bg-red-700 transition cursor-pointer"
+          className="mt-6 w-full flex items-center justify-center gap-2 bg-red-600 text-white px-4 py-3 rounded-lg text-lg font-semibold hover:bg-red-700 transition cursor-pointer"
         >
           <FaSignOutAlt size={18} /> Logout
         </button>
