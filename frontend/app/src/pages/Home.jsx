@@ -68,7 +68,7 @@ const Home = () => {
           <div className="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 text-4xl shadow-md">
             <FaUser />
           </div>
-          <h2 className="text-xl font-bold mt-4 text-gray-800">{user.first_name + " " + user.last_name}</h2>
+          <h2 className="text-xl font-bold mt-4 text-gray-800 wrap-text">{user.first_name + " " + user.last_name}</h2>
           <p className="text-gray-500 text-sm">User Profile</p>
         </div>
 
@@ -84,7 +84,7 @@ const Home = () => {
             <span><strong>Date of Birth:</strong> {user.date_of_birth}</span>
           </div>
 
-          <div className="flex items-center gap-3 bg-gray-100 p-3 rounded-lg">
+          <div className="flex items-center gap-3 bg-gray-100 p-3 rounded-lg wrap-text">
             <FaMapMarkerAlt className="text-red-600" size={20} />
             <span><strong>Address:</strong> {user.address}</span>
           </div>
