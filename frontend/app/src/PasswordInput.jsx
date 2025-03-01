@@ -9,26 +9,28 @@ const PasswordInput = ({ value, onChange, placeholder }) => {
     };
 
     return (
-        <div className='flex items-center bg-cyan-600/5 px-5 rounded mb-3'>
+        <div className='relative py-2'>
             <input
                 value={value} // current password being typed
                 onChange={onChange} 
                 placeholder={placeholder || "Password"} 
                 type={isShowPassword ? "text" : "password"} // differentiates how typed password is displayed
-                className="w-full text-sm bg-transparent py-3 mr-3 rounded outline-none"
+                className="input-box"
             />
 
             {isShowPassword ? (
                 <FaRegEye
                     size={22}
-                    className="cursor-pointer"
+                    className="absolute right-4 top-5 text-white cursor-pointer"
                     onClick={() => toggleShowPassword()}
+                    color='white'
                 />
             ) : (
                 <FaRegEyeSlash
                     size={22}
-                    className="cursor-pointer"
+                    className="absolute right-4 top-5 text-white cursor-pointer"
                     onClick={() => toggleShowPassword()}
+                    color='white'
                 />
             )}
         </div>

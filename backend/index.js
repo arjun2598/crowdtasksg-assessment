@@ -49,7 +49,6 @@ app.post("/login", async (req, res) => {
 
         const user = result.rows[0];
         const storedPasswordHash = user.password_hash;
-        console.log(password, storedPasswordHash);
         const match = await bcrypt.compare(password, storedPasswordHash);
 
         if (!match) {

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import PasswordInput from '../PasswordInput';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../axiosInstance';
+import { FaUser } from 'react-icons/fa';
 
 const Login = () => {
     const [username, setUsername] = useState(""); 
@@ -47,24 +48,24 @@ const Login = () => {
     };
 
     return (
-        <div className='h-screen bg-cyan-50 overflow-hidden relative'> 
-            <div className='login-ui-box right-10 -top-40' />
-            <div className='login-ui-box bg-cyan-200 -bottom-40 right-1/2' />
-
+        <div className='h-screen bg-login bg-cover bg-center overflow-hidden relative'> 
             <div className='container h-screen flex items-center justify-center px-20 mx-auto'>
-                <div className='w-2/4 h-[75vh] bg-white rounded-r-lg relative p-16 shadow-lg shadow-cyan-200/20'>
+                <div className='w-2/5 h-[60vh] bg-transparent border border-white/10 rounded-lg relative p-16 shadow-lg shadow-black backdrop-blur-md'>
                     <form onSubmit={handleLogin}>
-                        <h4 className='text-2xl font-semibold mb-7'>Login</h4>
+                        <h4 className='text-4xl font-semibold mb-7 text-white text-center'>Login</h4>
 
-                        <input
-                            type='text'
-                            placeholder='Username'
-                            className='input-box'
-                            value={username}
-                            onChange={({ target }) => {
-                                setUsername(target.value)
-                            }}
-                        />
+                        <div className='relative py-2'>
+                            <FaUser className="absolute right-5 top-6 text-white text-2l" />
+                            <input
+                                type='text'
+                                placeholder='Username'
+                                className='input-box'
+                                value={username}
+                                onChange={({ target }) => {
+                                    setUsername(target.value)
+                                }}
+                            />
+                        </div>
 
                         <PasswordInput
                             value={password}
@@ -74,10 +75,12 @@ const Login = () => {
                         />
 
                         {error && <p className="text-red-500 text-xs pb-1">{error}</p>}
-
-                        <button type='submit' className='btn-primary'>
-                            LOGIN
-                        </button>
+                        
+                        <div className='py-3'>
+                            <button type='submit' className='btn-primary'>
+                                Login
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>

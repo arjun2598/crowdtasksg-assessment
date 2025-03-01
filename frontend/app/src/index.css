@@ -1,9 +1,13 @@
 @import "tailwindcss";
 
 .input-box {
-    @apply w-full text-sm bg-cyan-600/5 rounded px-5 py-3 mb-4 outline-none;
+    @apply w-full text-sm bg-transparent rounded-full px-5 py-3 mb-4 outline text-white;
 }
 
 .btn-primary {
-    @apply w-full text-sm font-medium text-white bg-cyan-500 shadow-lg shadow-cyan-200/50 p-[10px] rounded-full my-1 hover:bg-cyan-400 hover:cursor-pointer;
+    @apply w-full text-sm py-3 font-medium bg-white shadow-lg shadow-cyan-200/50 p-[10px] rounded-full my-1 hover:bg-slate-200 hover:cursor-pointer;
+}
+
+.bg-login {
+    background-image: url('./assets/bg.jpg');
 }
