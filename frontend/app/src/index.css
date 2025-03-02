@@ -1,18 +1,64 @@
 @import "tailwindcss";
 
-.input-box {
-    @apply w-full text-sm bg-transparent rounded-full px-5 py-3 mb-4 outline text-white;
-}
-
-.btn-primary {
-    @apply w-full text-sm py-3 font-medium bg-white shadow-lg shadow-cyan-200/50 p-[10px] rounded-full my-1 hover:bg-slate-200 hover:cursor-pointer;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .bg-img {
     background-image: url('./assets/bg.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
-.wrap-text {
-    word-break: break-word;
-    overflow-wrap: break-word;
+@layer components {
+    .login-container {
+        @apply h-screen overflow-hidden relative;
+    }
+
+    .login-form-wrapper {
+        @apply w-2/5 h-[60vh] bg-transparent border border-white/10 rounded-lg relative p-16 shadow-lg shadow-black backdrop-blur-md;
+    }
+
+    .username-icon {
+        @apply absolute right-5 top-5 text-white text-lg;
+    }
+
+    .password-icon {
+        @apply absolute right-4 top-5 text-white cursor-pointer;
+    }
+
+    .input-box {
+        @apply w-full text-sm bg-transparent rounded-full px-5 py-3 mb-4 outline text-white;
+    }
+
+    .btn-primary {
+        @apply w-full text-sm py-3 font-medium bg-white shadow-lg shadow-cyan-200/50 p-[10px] rounded-full my-1 hover:bg-slate-200 hover:cursor-pointer;
+    }
+
+    .profile-card {
+        @apply bg-transparent backdrop-blur-md outline shadow-2xl rounded-xl p-8 max-w-md w-full relative overflow-hidden;
+    }
+
+    .profile-picture {
+        @apply w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 text-4xl shadow-md;
+    }
+
+    .profile-name {
+        @apply text-2xl text-white font-semibold mt-4;
+    }
+
+    .info-box {
+        @apply flex items-center gap-3 bg-gray-100 p-3 rounded-lg font-semibold;
+    }
+
+    .logout-btn {
+        @apply mt-6 w-full flex items-center justify-center gap-2 bg-red-600 text-white px-4 py-3 rounded-lg text-lg font-semibold hover:bg-red-700 transition cursor-pointer;
+    }
+}
+
+@layer utilities {
+    .wrap-text {
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
 }
