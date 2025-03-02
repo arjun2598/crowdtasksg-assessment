@@ -10,12 +10,10 @@ Make sure the following are installed on your device:
 1. Clone the repository to your device using Git: `git clone https://github.com/arjun2598/crowdtasksg-assessment.git`.
 2. Navigate to the project folder on your device: `cd crowdtasksg-assessment`.
 3. Install the required dependencies: `npm install`.
-4. Set up the sample PostgreSQL database:
-   - Create your database if you have not done so.
-   - Run the command `psql -U your_postgres_user -h localhost -p 5432 -d your_database_name` to connect to your database,
-    replacing the placeholder values with your credentials.
-   - Run the command `\i Setup/db.sql` to run the provided SQL script to create the sample table and add some sample users.
-     Note that all sample users have been initalised with the password `password123`.
+4. Set up the sample PostgreSQL database: 
+   - Create your database if you have not done so. 
+   - Connect to your database and run the db.sql script provided in the **Setup** folder.
+   - Note that all sample users have been initalised with the password `password123`.
 6. Create a .env file in the **backend** folder to set up the required environment variables:
    - ```PG_USER = 'your_username'
       PG_PASSWORD = 'your_password'
