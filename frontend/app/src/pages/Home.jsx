@@ -46,7 +46,7 @@ const Home = () => {
         setUser(userData);
         setLoading(false);
       } catch (err) {
-        setError("User data not found.");
+        setError("User data was not found.");
         setLoading(false);
       }
     };

@@ -15,12 +15,12 @@ const Login = () => {
     e.preventDefault(); // prevent default submission of form
 
     if (!username) {
-      setError("Please enter a username.");
+      setError("Please enter your username.");
       return;
     }
 
     if (!password) {
-      setError("Please enter a password.");
+      setError("Please enter your password.");
       return;
     }
 
