@@ -8,12 +8,8 @@
     @apply w-full text-sm py-3 font-medium bg-white shadow-lg shadow-cyan-200/50 p-[10px] rounded-full my-1 hover:bg-slate-200 hover:cursor-pointer;
 }
 
-.bg-login {
-    background-image: url('./assets/bg-login.jpg');
-}
-
-.bg-home {
-    background-image: url('./assets/bg-home.jpg');
+.bg-img {
+    background-image: url('./assets/bg.jpg');
 }
 
 .wrap-text {

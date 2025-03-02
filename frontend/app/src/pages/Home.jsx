@@ -61,35 +61,34 @@ const Home = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-home bg-cover bg-center p-6">
-      <div className="bg-transparent outline shadow-2xl rounded-xl p-8 max-w-md w-full relative overflow-hidden">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-img bg-cover bg-center p-6">
+      <div className="bg-transparent backdrop-blur-md outline shadow-2xl rounded-xl p-8 max-w-md w-full relative overflow-hidden">
         {/* Profile Picture */}
         <div className="flex flex-col items-center">
           <div className="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 text-4xl shadow-md">
             <FaUser />
           </div>
-          <h2 className="text-xl font-bold mt-4 text-gray-800 wrap-text">{user.first_name + " " + user.last_name}</h2>
-          <p className="text-gray-500 text-sm">User Profile</p>
+          <h2 className="text-2xl text-white font-semibold mt-4 wrap-text">{user.first_name + " " + user.last_name}</h2>
         </div>
 
         {/* User Details */}
         <div className="mt-6 space-y-4">
-          <div className="flex items-center gap-3 bg-gray-100 p-3 rounded-lg">
+          <div className="flex items-center gap-3 bg-gray-100 p-3 rounded-lg font-semibold">
             <FaIdCard className="text-blue-600" size={20} />
             <span><strong>NRIC:</strong> {user.nric}</span>
           </div>
 
-          <div className="flex items-center gap-3 bg-gray-100 p-3 rounded-lg">
+          <div className="flex items-center gap-3 bg-gray-100 p-3 rounded-lg font-semibold">
             <FaCalendarAlt className="text-green-600" size={20} />
             <span><strong>Date of Birth:</strong> {user.date_of_birth}</span>
           </div>
 
-          <div className="flex items-center gap-3 bg-gray-100 p-3 rounded-lg wrap-text">
+          <div className="flex items-center gap-3 bg-gray-100 p-3 rounded-lg wrap-text font-semibold">
             <FaMapMarkerAlt className="text-red-600" size={20} />
             <span><strong>Address:</strong> {user.address}</span>
           </div>
 
-          <div className="flex items-center gap-3 bg-gray-100 p-3 rounded-lg">
+          <div className="flex items-center gap-3 bg-gray-100 p-3 rounded-lg font-semibold">
             <FaVenusMars className="text-purple-600" size={20} />
             <span><strong>Gender:</strong> {user.gender}</span>
           </div>
