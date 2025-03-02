@@ -14,7 +14,7 @@ const PasswordInput = ({ value, onChange, placeholder }) => {
         value={value}
         onChange={onChange}
         placeholder={placeholder || "Password"}
-        type={isShowPassword ? "text" : "password"} 
+        type={isShowPassword ? "text" : "password"}
         className="input-box"
       />
 

@@ -18,11 +18,16 @@ const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token"); // Retrieve token from local storage
 
     if (!token) {
-      setError("No token found. Please log in.");
+      setError("You are not logged in. Please log in to view your profile.");
       setLoading(false);
+
+      setTimeout(() => { // Redirect user to login page after 4 sec delay
+        navigate("/");
+      }, 4000);
+
       return;
     }
 
@@ -33,6 +38,7 @@ const Home = () => {
         });
 
         const userData = response.data.user;
+        // Convert date to DD/MM/YYYY format
         userData.date_of_birth = new Date(
           userData.date_of_birth
         ).toLocaleDateString("en-GB");
@@ -40,7 +46,7 @@ const Home = () => {
         setUser(userData);
         setLoading(false);
       } catch (err) {
-        setError("Failed to fetch user data.");
+        setError("User data not found.");
         setLoading(false);
       }
     };
@@ -49,7 +55,7 @@ const Home = () => {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("token"); // Remove jwt token from local storage before redirecting
     navigate("/");
   };
 
@@ -77,7 +83,7 @@ const Home = () => {
           <div className="profile-picture">
             <FaUser />
           </div>
-          <h2 className="profile-name wrap-text">
+          <h2 className="profile-name wrap-text"> {/* wrap text for names that are longer */}
             {user.first_name + " " + user.last_name}
           </h2>
         </div>
@@ -98,7 +104,7 @@ const Home = () => {
             </span>
           </div>
 
-          <div className="info-box wrap-text">
+          <div className="info-box wrap-text"> {/* wrap text for addresses that are longer */}
             <FaMapMarkerAlt className="text-red-600" size={20} />
             <span>
               <strong>Address:</strong> {user.address}

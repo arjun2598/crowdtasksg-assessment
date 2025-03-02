@@ -12,7 +12,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
-    e.preventDefault(); // prevents default submission of form
+    e.preventDefault(); // prevent default submission of form
 
     if (!username) {
       setError("Please enter a username.");
