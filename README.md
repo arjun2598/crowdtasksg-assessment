@@ -14,7 +14,7 @@ Make sure the following are installed on your device:
    - Create your database if you have not done so.
    - Run the command `psql -U your_postgres_user -h localhost -p 5432 -d your_database_name` to connect to your database,
     replacing the placeholder values with your credentials.
-   - Run the command `\i db.sql` to run the provided SQL script to create the sample table and add some sample users.
+   - Run the command `\i Setup/db.sql` to run the provided SQL script to create the sample table and add some sample users.
      Note that all sample users have been initalised with the password `password123`.
 6. Create a .env file in the **backend** folder to set up the required environment variables:
    - ```PG_USER = 'your_username'
